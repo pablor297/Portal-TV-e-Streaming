@@ -11,5 +11,3 @@ As melhorias incluíram:
 - Tradução e localização completa da interface para o português
 
 - Atualização do FontAwesome para a versão mais recente, garantindo suporte a novos ícones
-
-- Adequação do layout para melhor experiência em dispositivos móveis
