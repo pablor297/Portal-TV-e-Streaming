@@ -12,4 +12,4 @@ As melhorias incluíram:
 
 - Atualização do FontAwesome para a versão mais recente, garantindo suporte a novos ícones
 
-- Máxima otimização de SEO, gerando uma pontuação melhor no Core Web Vitals/PageSpeed
+- Máxima otimização de SEO, gerando uma boa pontuação no Core Web Vitals/PageSpeed
