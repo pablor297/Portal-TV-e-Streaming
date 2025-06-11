@@ -2,55 +2,216 @@
 <!DOCTYPE html>
 <html b:version='3' class='v3' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
-    
-    <!-- Ad.Plus - Interstitial -->
-    <script async='async' src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'/> <script>   window.googletag = window.googletag || {cmd: []}; googletag.cmd.push(function() { var interstitialSlot = googletag.defineOutOfPageSlot(&#39;/21849154601,23205950811/Ad.Plus-Interstitial&#39;, googletag.enums.OutOfPageFormat.INTERSTITIAL);  if (interstitialSlot) interstitialSlot.addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices();   googletag.display(interstitialSlot);     }); </script>
-    
-    <!-- Ad.Plus - Premium Sticky Anchor -->
-    <script async='async' src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'/> <script>   window.googletag = window.googletag || { cmd: [] }; var anchorSlot; googletag.cmd.push(function () { anchorSlot = googletag.defineOutOfPageSlot(&#39;/21849154601,23205950811/Ad.Plus-Anchor&#39;, googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR); anchorSlot.addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); googletag.display(anchorSlot);  }); setInterval(function(){googletag.pubads().refresh([anchorSlot]);}, 30000);  </script>
-    
-    <!-- Ad.Plus - Sticky Anchor -->
-    <script async='async' src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'/> <script>   window.googletag = window.googletag || { cmd: [] }; var anchorSlot; googletag.cmd.push(function () { anchorSlot = googletag.defineOutOfPageSlot(&#39;/21849154601,23205950811/Ad.Plus-Anchor-Small&#39;, googletag.enums.OutOfPageFormat.TOP_ANCHOR); anchorSlot.addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); googletag.display(anchorSlot);  }); setInterval(function(){googletag.pubads().refresh([anchorSlot]);}, 30000);  </script>
-    
-    <!-- Ad.Plus - InPage Video (OutStream) -->
-    <script async='async' src='https://cdn.ad.plus/player/adplus.js'/> <script data-playerPro='current'>(function(){var s=document.querySelector(&#39;script[data-playerPro=&quot;current&quot;]&#39;);s.removeAttribute(&quot;data-playerPro&quot;);(playerPro=window.playerPro||[]).push({id:&quot;z2I717k6zq5b&quot;,after:s,appParams:{&quot;C_NETWORK_CODE&quot;:&quot;23205950811&quot;, &quot;C_WEBSITE&quot;:&quot;portaltvstreaming.com.br&quot;}});})();</script>
-    
-    <!-- Nobeta -->
-    <script src='https://api.nobeta.com.br/nobetaads&amp;id=portaltvstreaming'/>
-    
-    <script async='async' src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'/>
+	  <script>
+  function loadScript(src, async = true) {
+    var s = document.createElement(&#39;script&#39;);
+    s.src = src;
+    s.async = async;
+    document.head.appendChild(s);
+  }
+
+  function loadNonCriticalScripts() {
+    // Carregar widgets e anúncios pesados após load
+    loadScript(&#39;https://www.blogger.com/widgets/283-widgets.js&#39;, true);
+    loadScript(&#39;https://gum.criteo.com/sid/json?origin=...&#39;, true);
+    // Adicione mais scripts não críticos aqui
+  }
+
+  window.addEventListener(&#39;load&#39;, function() {
+    if (&#39;requestIdleCallback&#39; in window) {
+      requestIdleCallback(loadNonCriticalScripts);
+    } else {
+      // fallback simples para navegadores que não suportam requestIdleCallback
+      setTimeout(loadNonCriticalScripts, 3000);
+    }
+  });
+</script>
+
+<style>
+  /* Critical CSS mínimo para header + primeiras imagens */
+  body {
+    background: #fff;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .header, .navbar, .blog-posts, .entry-image-wrap, .entry-thumb {
+    visibility: visible;
+    opacity: 1;
+    transition: none;
+  }
+  .entry-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
+
 <script>
+  document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+    var firstThumb = document.querySelector(&#39;.blog-posts article.blog-post:first-child .entry-thumb.lazy-ify&#39;);
+    if(firstThumb &amp;&amp; firstThumb.getAttribute(&#39;data-image&#39;)) {
+      var img = new Image();
+      img.src = firstThumb.getAttribute(&#39;data-image&#39;);
+      img.alt = &quot;Imagem do post&quot;;
+      img.loading = &quot;eager&quot;; // priorizar carregamento
+      img.setAttribute(&#39;fetchpriority&#39;, &#39;high&#39;); // prioridade alta para LCP
+      img.style.width = &quot;100%&quot;;
+      img.style.height = &quot;auto&quot;;
+      img.style.display = &quot;block&quot;;
+      firstThumb.parentNode.insertBefore(img, firstThumb);
+      firstThumb.style.display = &quot;none&quot;; // Oculta o span original
+    }
+
+    // Otimizar imagens abaixo da dobra com lazy loading
+    document.querySelectorAll(&#39;img&#39;).forEach(function(img) {
+      if (!img.hasAttribute(&#39;loading&#39;)) {
+        img.setAttribute(&#39;loading&#39;, &#39;lazy&#39;);
+      }
+    });
+  });
+</script>
+  
+<script>
+  document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+    var firstThumb = document.querySelector(&#39;.blog-posts article.blog-post:first-child .entry-thumb.lazy-ify&#39;);
+    if(firstThumb &amp;&amp; firstThumb.getAttribute(&#39;data-image&#39;)) {
+      var imgUrl = firstThumb.getAttribute(&#39;data-image&#39;);
+
+      // Cria picture com source WebP + fallback img
+      var picture = document.createElement(&#39;picture&#39;);
+
+      var sourceWebp = document.createElement(&#39;source&#39;);
+      sourceWebp.srcset = imgUrl.replace(/=s\d+/, &#39;=s640&#39;); // Blogger gera WebP assim
+      sourceWebp.type = &#39;image/webp&#39;;
+
+      var img = document.createElement(&#39;img&#39;);
+      img.src = imgUrl;
+      img.alt = &#39;Imagem do post&#39;;
+      img.loading = &#39;eager&#39;;
+      img.setAttribute(&#39;fetchpriority&#39;, &#39;high&#39;); // prioridade alta para LCP
+      img.style.width = &#39;100%&#39;;
+      img.style.height = &#39;auto&#39;;
+      img.style.display = &#39;block&#39;;
+
+      picture.appendChild(sourceWebp);
+      picture.appendChild(img);
+
+      // Insere o picture antes do span e esconde o span original
+      firstThumb.parentNode.insertBefore(picture, firstThumb);
+      firstThumb.style.display = &#39;none&#39;;
+    }
+
+    // Outras imagens: aplicar loading=&quot;lazy&quot;
+    document.querySelectorAll(&#39;img&#39;).forEach(function(img) {
+      if (!img.hasAttribute(&#39;loading&#39;)) {
+        img.setAttribute(&#39;loading&#39;, &#39;lazy&#39;);
+      }
+    });
+  });
+</script>
+  
+  <script type='application/ld+json'>
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@graph&quot;: [
+    {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;@id&quot;: &quot;https://www.portaltvstreaming.com.br/#organization&quot;,
+      &quot;name&quot;: &quot;Portal TV e Streaming&quot;,
+      &quot;url&quot;: &quot;https://www.portaltvstreaming.com.br/&quot;,
+      &quot;logo&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;url&quot;: &quot;https://blogger.googleusercontent.com/img/a/AVvXsEgs01gcfj52lZ6H0iofjcoaP_koNAVP6xMop29mgqBwtuOcUWoje-Dm7m7pPbxlqlgf-MEynGTLXI8KoDaohGaqgY2ObUItrYeuTmHzpqJYfS5y2giJOSZQb0rQ4rxEf7ozJ9WH2PRVMY-vtMHB78PV45jaug5um-5y-eJvxp7bMsdpUxpKZgMAb6mJzfU=s150&quot;,
+        &quot;width&quot;: 150,
+        &quot;height&quot;: 150
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;WebSite&quot;,
+      &quot;@id&quot;: &quot;https://www.portaltvstreaming.com.br/#website&quot;,
+      &quot;url&quot;: &quot;https://www.portaltvstreaming.com.br/&quot;,
+      &quot;name&quot;: &quot;Portal TV e Streaming&quot;,
+      &quot;publisher&quot;: {
+        &quot;@id&quot;: &quot;https://www.portaltvstreaming.com.br/#organization&quot;
+      },
+      &quot;potentialAction&quot;: {
+        &quot;@type&quot;: &quot;SearchAction&quot;,
+        &quot;target&quot;: &quot;https://www.portaltvstreaming.com.br/search?q={search_term_string}&quot;,
+        &quot;query-input&quot;: &quot;required name=search_term_string&quot;
+      }
+    }
+  ]
+}
+</script>
+  
+  <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+<script type='application/ld+json'>
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;WebPage&quot;,
+  &quot;url&quot;: &quot;<data:blog.homepageUrl/>&quot;,
+  &quot;name&quot;: &quot;Portal TV e Streaming&quot;,
+  &quot;description&quot;: &quot;<data:blog.description/>&quot;,
+  &quot;publisher&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;Portal TV e Streaming&quot;,
+    &quot;logo&quot;: {
+      &quot;@type&quot;: &quot;ImageObject&quot;,
+      &quot;url&quot;: &quot;https://blogger.googleusercontent.com/img/a/AVvXsEgs01gcfj52lZ6H0iofjcoaP_koNAVP6xMop29mgqBwtuOcUWoje-Dm7m7pPbxlqlgf-MEynGTLXI8KoDaohGaqgY2ObUItrYeuTmHzpqJYfS5y2giJOSZQb0rQ4rxEf7ozJ9WH2PRVMY-vtMHB78PV45jaug5um-5y-eJvxp7bMsdpUxpKZgMAb6mJzfU=s150&quot;,
+      &quot;width&quot;: 150,
+      &quot;height&quot;: 150
+    }
+  }
+}
+</script>
+</b:if>
+  
+  <b:if cond='data:blog.pageType == &quot;item&quot;'>
+<script type='application/ld+json'>
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+  &quot;@id&quot;: &quot;https://www.portaltvstreaming.com.br/#breadcrumb&quot;,
+  &quot;itemListElement&quot;: [
+    {
+      &quot;@type&quot;: &quot;ListItem&quot;,
+      &quot;position&quot;: 1,
+      &quot;name&quot;: &quot;Home&quot;,
+      &quot;item&quot;: {
+        &quot;@id&quot;: &quot;https://www.portaltvstreaming.com.br/&quot;,
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;url&quot;: &quot;https://www.portaltvstreaming.com.br/&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;ListItem&quot;,
+      &quot;position&quot;: 2,
+      &quot;name&quot;: &quot;<data:post.title/>&quot;,
+      &quot;item&quot;: {
+        &quot;@id&quot;: &quot;<data:post.url/>&quot;,
+        &quot;@type&quot;: &quot;WebPage&quot;,
+        &quot;url&quot;: &quot;<data:post.url/>&quot;
+      }
+    }
+  ]
+}
+</script>
+</b:if>
+   <link href='https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap' onerror='this.disabled=true;' rel='stylesheet'/>
+  
+  <b:if cond='data:post.firstImageUrl'>
+   <link as='image' crossorigin='anonymous' expr:href='data:post.firstImageUrl' expr:imagesrcset='data:post.firstImageUrl.replace(&quot;.jpg&quot;, &quot;.webp&quot;) + &quot; 1x&quot;' rel='preload' type='image/webp'/>
+  </b:if>
+   <link href='https://cdnjs.cloudflare.com' rel='preconnect'/>
+   <link href='https://www.blogger.com' rel='preconnect'/>
+   <link href='https://gum.criteo.com' rel='preconnect'/>
+   <link as='script' href='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' rel='preload'/>
+ <script>
   //<![CDATA[
         function nbtLog(e){"string"!=typeof e&&"number"!=typeof e?(console.log("NOBETA | IABs↴"),console.log(e)):console.log(`%cNOBETA|IABs%c ${e}`,"color: #141414; font-weight: 550; background-color: sandybrown; padding:1px 3px; border-radius: 3px; margin-right: 7px","")}function setupGoogleTag(){window.googletag=window.googletag||{cmd:[]},window.googletag.cmd.push((function(){googletag.pubads().set("page_url",document.location.href),googletag.pubads().enableSingleRequest(),googletag.enableServices(),googletag.pubads().collapseEmptyDivs(!0),googletag.pubads().addEventListener("slotRenderEnded",(function(e){if(e.isEmpty||!e.slotContentChanged)return void nbtLog(`Ad unit "${e.slot.getAdUnitPath()}" wasn't rendered`);nbtLog(`Ad unit "${e.slot.getAdUnitPath()}" loaded with size [${e.size[0]}, ${e.size[1]}]`);let t=document.getElementById(e.slot.getSlotElementId());t.style.width=e.size[0]+"px",t.style.height=e.size[1]+"px"}))}))}function makeIab(e){return{...e,setupIab:function(e){if(void 0!==this.rules&&!this.rules)return;let t=this.createIabDiv();t&&this.defineGoogleSlot(t.id,e)},createIabDiv:function(){let e=this.selector.substring(0,this.selector.indexOf(":")),t=this.selector.substring(this.selector.indexOf(":")+1),o=document.querySelectorAll(e)[t];if(!o)return!1;let r=document.createElement("div");switch(r.id="nobeta_ad_"+this.adUnit,r.style.width=this.adSizes[0][0]+"px",r.style.height=this.adSizes[0][1]+"px",r.style.overflow="hidden",r.style.borderRadius="7px",r.style.boxShadow="0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",this.styles.forEach((e=>{r.style[e.property]=e.value})),this.method){case"prepend":o.prepend(r);break;case"append":o.append(r);break;case"insertBefore":o.parentNode.insertBefore(r,o)}return this.adSizes=this.adSizes.filter((e=>e[0]<=r.parentElement.offsetWidth)),void 0===this.anchor||window.innerWidth<=530||navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad|android)/)||document.addEventListener("scroll",(e=>{if(window.scrollY>=this.anchor.minScrollyY&&window.scrollY<=this.anchor.maxScrollY)return r.parentElement.style.position="relative",r.style.position="fixed",void(r.style.top="5px");r.style.position="static"})),r},defineGoogleSlot:function(e,t){const o=this.adSizes,r=this.adUnit;window.googletag.cmd.push((function(){const a=`/150684666,${t.partnerGamId}/${t.partnerBlock}.iab-${r}`;googletag.defineSlot(a,o,e).addService(googletag.pubads()),googletag.display(e)}))}}}const nbtInfo={partnerGamId:23205950811,partnerBlock:"portaltvstreaming"},currentUrl=document.location.href,nbtIabs=[makeIab({adUnit:"970x250",adSizes:[[970,250],[970,90],[728,90],[300,250],[250,250],[320,100]],selector:"#featured.featured.row:0",method:"append",styles:[{property:"margin",value:"4px auto"}],rules:"https://www.portaltvstreaming.com.br/"==currentUrl}),makeIab({adUnit:"728x90",adSizes:[[728,90],[300,250],[300,100],[320,50],[300,50],[250,250],[320,100]],selector:"#main.main.section .blog-posts.hfeed .post-outer:4",method:"insertBefore",styles:[{property:"margin",value:"0 auto"}],rules:"https://www.portaltvstreaming.com.br/"==currentUrl}),makeIab({adUnit:"728x90-1",adSizes:[[728,90],[300,250],[300,100],[320,50],[300,50],[250,250],[320,100]],selector:"#main.main.section .blog-posts.hfeed .post-outer:8",method:"insertBefore",styles:[{property:"margin",value:"0 auto"}],rules:"https://www.portaltvstreaming.com.br/"==currentUrl}),makeIab({adUnit:"728x90-2",adSizes:[[728,90],[300,250],[300,100],[320,50],[300,50],[250,250],[320,100]],selector:"#main.main.section .blog-posts.hfeed .post-outer:12",method:"insertBefore",styles:[{property:"margin",value:"0 auto"}],rules:"https://www.portaltvstreaming.com.br/"==currentUrl}),makeIab({adUnit:"728x90-3",adSizes:[[728,90],[300,250],[300,100],[320,50],[300,50],[250,250],[320,100]],selector:"#main.main.section .blog-posts.hfeed .post-outer:16",method:"insertBefore",styles:[{property:"margin",value:"0 auto"}],rules:"https://www.portaltvstreaming.com.br/"==currentUrl}),makeIab({adUnit:"300x600",adSizes:[[300,600],[336,280],[300,250],[320,100],[320,50],[300,100],[300,50],[250,250]],selector:"#sidebar-wrapper .sidebar.ready-widget.section .widget.PopularPosts:0",method:"insertBefore",styles:[{property:"margin",value:"7px auto"}]}),makeIab({adUnit:"300x600-1",adSizes:[[300,600],[336,280],[300,250],[320,100],[320,50],[300,100],[300,50],[250,250]],selector:"#sidebar-wrapper .sidebar.ready-widget.section:0",method:"append",styles:[{property:"margin",value:"7px auto"}]}),makeIab({adUnit:"970x250",adSizes:[[970,250],[970,90],[728,90],[300,250],[250,250],[320,100]],selector:"#outer-wrapper:0",method:"prepend",styles:[{property:"margin",value:"4px auto"}],rules:"https://www.portaltvstreaming.com.br/"!=currentUrl}),makeIab({adUnit:"728x90",adSizes:[[728,90],[300,250],[300,100],[320,50],[300,50],[250,250],[320,100]],selector:"div .sa_incontent:0",method:"append",styles:[{property:"margin",value:"0 auto"}],rules:"https://www.portaltvstreaming.com.br/"!=currentUrl})];setupGoogleTag(),window.googletag&&googletag.apiReady,nbtIabs.forEach((e=>{e.setupIab(nbtInfo)}));
 //]]>
 </script>
-    
-    <!-- Orquidea - Pixel -->
-<script src='//tags.orquidea.ai/tag/94004'/>
-    
-    <!-- Orquidea - Fluid -->
-<script src='//tags.orquidea.ai/tag/93994'/>
-    
-    <!-- Simple Ads -->
-    <script type='text/javascript'>
-(function (w, d) {
-var s = d.createElement(&quot;script&quot;), h = d.head || d.getElementsByTagName(&quot;head&quot;)[0];
-s.src = &quot;https://tag.simpleads.com.br/v3/s683936/p2036484/show.js&quot;;
-s.type = &quot;text/javascript&quot;;
-s.async = true;
-s.setAttribute(&quot;data-cfasync&quot;, &quot;false&quot;);
-h.appendChild(s);
-})(window, document);
-</script>
-    
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start&#39;:
-new Date().getTime(),event:&#39;gtm.js&#39;});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!=&#39;dataLayer&#39;? &#39;+l:&#39;&#39;;j.async=true;j.src=
-&#39;https://www.googletagmanager.com/gtm.js?id=&#39;+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,&#39;script&#39;,&#39;dataLayer&#39;,&#39;GTM-NVZQ4L7V&#39;);</script>
-<!-- End Google Tag Manager -->
-    
     <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
     <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700|Open+Sans:400,700,400italic|Poppins:regular,500,600,700' media='all' rel='stylesheet' type='text/css'/><link href='https://fonts.googleapis.com/css?family=Roboto%3A400%2C500%2C700&amp;subset=latin%2Clatin-ext&amp;ver=1.0' id='magazine-fonts-css' media='all' rel='stylesheet' type='text/css'/>
 <link href='http://fonts.googleapis.com/css?family=Merriweather%3A700%7CRoboto%3A400&amp;subset=latin&amp;ver=4.8.4' id='redux-google-fonts-magazine_theme_options-css' media='all' rel='stylesheet' type='text/css'/>
@@ -66,12 +227,11 @@ j=d.createElement(s),dl=l!=&#39;dataLayer&#39;? &#39;+l:&#39;&#39;;j.async=true;
 			</b:if>
 		</b:if>
     </title>
-    <!-- Description and Keywords (start) -->
+    <!-- Description (start) -->
     <b:if cond='data:blog.pageType == &quot;index&quot;'>
-    <meta content='YOUR DESCRIPTION HERE' name='description'/>
+    <meta content='Veja a programação semanal dos canais, resumo dos capítulos das novelas, as últimas notícias sobre streaming, filmes, animes, séries e mais!' name='description'/>
     </b:if>
-    <meta content='YOUR KEYWORDS HERE' name='keywords'/>
-    <!-- Description and Keywords (end) -->
+    <!-- Description (end) -->
     <b:if cond='data:blog.pageType == &quot;item&quot;'>
         <meta expr:content='data:blog.pageName' property='og:title'/>
         <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
@@ -1273,33 +1433,8 @@ var pagenav_next = "Próximo";
 </script>
 
 </head>
-  <script type='application/ld+json'>
-{
-  &quot;@context&quot;: &quot;https://schema.org&quot;,
-  &quot;@type&quot;: &quot;Review&quot;,
-  &quot;reviewRating&quot;: {
-    &quot;@type&quot;: &quot;Rating&quot;,
-    &quot;ratingValue&quot;: &quot;5&quot;,
-    &quot;bestRating&quot;: &quot;5&quot;
-  },
-  &quot;author&quot;: {
-    &quot;@type&quot;: &quot;Person&quot;,
-    &quot;name&quot;: &quot;<data:post.author/>&quot;
-  },
-  &quot;datePublished&quot;: &quot;<data:post.timestamp/>&quot;,
-  &quot;itemReviewed&quot;: {
-    &quot;@type&quot;: &quot;CreativeWork&quot;,
-    &quot;name&quot;: &quot;<data:post.title/>&quot;,
-    &quot;image&quot;: &quot;<data:post.thumbnailUrl/>&quot;
-  }
-}
-</script>
 
 <body expr:class='data:blog.pageType'>
-  
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-NVZQ4L7V' style='display:none;visibility:hidden' width='0'/></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
   <div class='theme-opt' style='display:none'>
     <b:section class='option' id='option' maxwidgets='1' name='Theme Options' showaddelement='yes'>
